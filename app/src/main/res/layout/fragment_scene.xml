@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:name="com.ps.kidsworld.Fragments.SceneFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:id="@+id/arFragmentHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true">
+
+
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/Ib_FSceneBack"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+        android:allowClickWhenDisabled="false"
+        android:background="@null"
+        android:contentDescription="Previous model"
+        android:src="@drawable/baseline_arrow_back_24" />
+
+    <ImageView
+        android:id="@+id/IV_FScene_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="bottom bar"
+        android:src="@drawable/bottom_white_bar"></ImageView>
+
+    <LinearLayout
+        android:id="@+id/Hsv_FScene_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@null"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/Ib_FSceneLeft"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+
+            android:allowClickWhenDisabled="false"
+            android:background="@drawable/prev_btn"
+            android:clickable="true"
+            android:contentDescription="Previous model"
+            android:focusable="true" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        <ImageButton
+            android:id="@+id/Ib_FScenePlay"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:allowClickWhenDisabled="false"
+            android:background="@drawable/play_btn"
+            android:clickable="true"
+            android:contentDescription="Play"
+            android:focusable="true" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/Ib_FSceneRight"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:allowClickWhenDisabled="false"
+            android:background="@drawable/next_btn"
+            android:clickable="true"
+            android:contentDescription="Next model"
+            android:focusable="true" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FAB_FScene_1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_above="@+id/IV_FScene_1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:contentDescription="More btn"
+        android:focusable="true"
+        android:padding="20dp"
+        android:tint="@color/white"
+        android:visibility="gone" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FAB_FScene_rotateBtn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_above="@+id/FAB_FScene_1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:contentDescription="Rotate Btn"
+        android:focusable="true"
+        android:padding="40dp"
+        android:tint="@color/black"
+        android:visibility="gone"
+        app:srcCompat="@drawable/baseline_360_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FAB_FScene_MoveBtn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_above="@+id/FAB_FScene_rotateBtn"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:contentDescription="Rotate Btn"
+        android:focusable="true"
+        android:padding="40dp"
+        android:tint="@color/black"
+        android:visibility="gone"
+        app:srcCompat="@drawable/outline_open_with_24" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loader_colors" />
+
+
+</RelativeLayout>

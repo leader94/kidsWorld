@@ -1,0 +1,401 @@
+{
+  "config": {
+    "capitalAlphabets": {
+      "loadLocal": true,
+      "cPreload": 3,
+      "defaultScale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      }
+    },
+    "numbers": {
+      "loadLocal": true,
+      "cPreload": 3,
+      "defaultScale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      }
+    }
+  },
+  "scenes": {
+    "animals": [
+      {
+        "mUri": "https://github.com/codemaker2015/3d-models/blob/master/glb_files/model.glb?raw=true",
+        "mFName": "A.glb",
+        "aFName": ".mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "https://github.com/codemaker2015/3d-models/blob/master/glb_files/sportcar.glb?raw=true",
+        "mFName": "A.glb",
+        "aFName": ".mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "https://sceneview.github.io/assets/models/MaterialSuite.glb",
+        "aFName": ".mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "https://sceneview.github.io/assets/models/ClearCoat.glb",
+        "aFName": ".mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "https://sceneview.github.io/assets/models/FiatPunto.glb",
+        "aFName": ".mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "https://sceneview.github.io/assets/models/Gumball.glb",
+        "aFName": ".mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "https://sceneview.github.io/assets/models/GameBoy.glb",
+        "aFName": ".mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "https://sceneview.github.io/assets/models/Halloween.glb",
+        "aFName": ".mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "https://sceneview.github.io/assets/models/DamagedHelmet.glb",
+        "aFName": ".mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      }
+    ],
+    "capitalAlphabets": [
+      {
+        "mUri": "A.glb?raw=true",
+        "mFName": "A.glb",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE",
+        "aUri": "A.mp3",
+        "aFName": "A.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "B.glb?raw=true",
+        "mFName": "B.glb",
+        "aUri": "B.mp3",
+        "aFName": "B.mp3",
+        "minSize": "0.1",
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "ROTATE"
+      },
+      {
+        "mUri": "C.glb?raw=true",
+        "mFName": "C.glb",
+        "aUri": "C.mp3",
+        "aFName": "C.mp3",
+        "minSize": "0.1",
+        "maxSize": "2",
+        "arrAnim": "FALL_FROM_TOP",
+        "exitAnim": "EXIT_TO_BACK",
+        "anim": "ROTATE"
+      },
+      {
+        "mUri": "D.glb?raw=true",
+        "mFName": "D.glb",
+        "aUri": "D.mp3",
+        "aFName": "D.mp3",
+        "minSize": "0.1",
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_BACK",
+        "anim": "BOUNCE"
+      },
+      {
+        "mUri": "E.glb?raw=true",
+        "mFName": "E.glb",
+        "aUri": "E.mp3",
+        "aFName": "E.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "F.glb?raw=true",
+        "mFName": "F.glb",
+        "aUri": "F.mp3",
+        "aFName": "F.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "G.glb?raw=true",
+        "mFName": "G.glb",
+        "aUri": "G.mp3",
+        "aFName": "G.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "H.glb?raw=true",
+        "mFName": "H.glb",
+        "aUri": "H.mp3",
+        "aFName": "H.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "I.glb?raw=true",
+        "mFName": "I.glb",
+        "aUri": "I.mp3",
+        "aFName": "I.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "J.glb?raw=true",
+        "mFName": "J.glb",
+        "aUri": "J.mp3",
+        "aFName": "J.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "K.glb?raw=true",
+        "mFName": "K.glb",
+        "aUri": "K.mp3",
+        "aFName": "K.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "L.glb?raw=true",
+        "mFName": "L.glb",
+        "aUri": "L.mp3",
+        "aFName": "L.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "M.glb?raw=true",
+        "mFName": "M.glb",
+        "aUri": "M.mp3",
+        "aFName": "M.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "N.glb?raw=true",
+        "mFName": "N.glb",
+        "aUri": "N.mp3",
+        "aFName": "N.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "O.glb?raw=true",
+        "mFName": "O.glb",
+        "aUri": "O.mp3",
+        "aFName": "O.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "P.glb?raw=true",
+        "mFName": "P.glb",
+        "aUri": "P.mp3",
+        "aFName": "P.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "Q.glb?raw=true",
+        "mFName": "Q.glb",
+        "aUri": "Q.mp3",
+        "aFName": "Q.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "R.glb?raw=true",
+        "mFName": "R.glb",
+        "aUri": "R.mp3",
+        "aFName": "R.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "S.glb?raw=true",
+        "mFName": "S.glb",
+        "aUri": "S.mp3",
+        "aFName": "S.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "T.glb?raw=true",
+        "mFName": "T.glb",
+        "aUri": "T.mp3",
+        "aFName": "T.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "U.glb?raw=true",
+        "mFName": "U.glb",
+        "aUri": "U.mp3",
+        "aFName": "U.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "V.glb?raw=true",
+        "mFName": "V.glb",
+        "aUri": "V.mp3",
+        "aFName": "V.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "W.glb?raw=true",
+        "mFName": "W.glb",
+        "aUri": "W.mp3",
+        "aFName": "W.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "X.glb?raw=true",
+        "mFName": "X.glb",
+        "aUri": "X.mp3",
+        "aFName": "X.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "Y.glb?raw=true",
+        "mFName": "Y.glb",
+        "aUri": "Y.mp3",
+        "aFName": "Y.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "Z.glb?raw=true",
+        "mFName": "Z.glb",
+        "aUri": "Z.mp3",
+        "aFName": "Z.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      }
+    ],
+    "numbers": [
+      {
+        "mUri": "1.glb?raw=true",
+        "mFName": "1.glb",
+        "aUri": "1.mp3",
+        "aFName": "1.mp3",
+        "minSize": "0.1",
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_BACK",
+        "anim": "ROTATE"
+      },
+      {
+        "mUri": "2.glb?raw=true",
+        "mFName": "2.glb",
+        "aUri": "2.mp3",
+        "aFName": "2.mp3",
+        "minSize": "0.1",
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
+      },
+      {
+        "mUri": "3.glb?raw=true",
+        "mFName": "3.glb",
+        "aUri": "3.mp3",
+        "aFName": "3.mp3",
+        "minSize": "0.1",
+        "maxSize": "2",
+        "arrAnim": "FALL_FROM_TOP",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
+      },
+      {
+        "mUri": "4.glb?raw=true",
+        "mFName": "4.glb",
+        "aUri": "4.mp3",
+        "aFName": "4.mp3",
+        "minSize": "0.1",
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
+      },
+      {
+        "mUri": "5.glb?raw=true",
+        "mFName": "5.glb",
+        "aUri": "5.mp3",
+        "aFName": "5.mp3",
+        "minSize": "0.1",
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "ROTATE"
+      },
+      {
+        "mUri": "6.glb?raw=true",
+        "mFName": "6.glb",
+        "aUri": "6.mp3",
+        "aFName": "6.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "7.glb?raw=true",
+        "mFName": "7.glb",
+        "aUri": "7.mp3",
+        "aFName": "7.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "8.glb?raw=true",
+        "mFName": "8.glb",
+        "aUri": "8.mp3",
+        "aFName": "8.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "9.glb?raw=true",
+        "mFName": "9.glb",
+        "aUri": "9.mp3",
+        "aFName": "9.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      },
+      {
+        "mUri": "10.glb?raw=true",
+        "mFName": "10.glb",
+        "aUri": "10.mp3",
+        "aFName": "10.mp3",
+        "minSize": "0.1",
+        "maxSize": "2"
+      }
+    ]
+  }
+}
