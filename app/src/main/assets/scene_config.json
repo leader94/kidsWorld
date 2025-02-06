@@ -82,7 +82,7 @@
       {
         "mUri": "A.glb?raw=true",
         "mFName": "A.glb",
-        "arrAnim": "ARRIVE_FROM_LEFT",
+        "arrAnim": "ARRIVE_FROM_BACK",
         "exitAnim": "EXIT_TO_RIGHT",
         "anim": "BOUNCE",
         "aUri": "A.mp3",
@@ -99,7 +99,7 @@
         "maxSize": "2",
         "arrAnim": "ARRIVE_FROM_BACK",
         "exitAnim": "EXIT_TO_RIGHT",
-        "anim": "ROTATE"
+        "anim": "BOUNCE"
       },
       {
         "mUri": "C.glb?raw=true",
@@ -108,9 +108,9 @@
         "aFName": "C.mp3",
         "minSize": "0.1",
         "maxSize": "2",
-        "arrAnim": "FALL_FROM_TOP",
-        "exitAnim": "EXIT_TO_BACK",
-        "anim": "ROTATE"
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "D.glb?raw=true",
@@ -120,7 +120,7 @@
         "minSize": "0.1",
         "maxSize": "2",
         "arrAnim": "ARRIVE_FROM_BACK",
-        "exitAnim": "EXIT_TO_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
         "anim": "BOUNCE"
       },
       {
@@ -129,7 +129,10 @@
         "aUri": "E.mp3",
         "aFName": "E.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "F.glb?raw=true",
@@ -137,7 +140,10 @@
         "aUri": "F.mp3",
         "aFName": "F.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "G.glb?raw=true",
@@ -145,7 +151,10 @@
         "aUri": "G.mp3",
         "aFName": "G.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "H.glb?raw=true",
@@ -153,7 +162,10 @@
         "aUri": "H.mp3",
         "aFName": "H.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "I.glb?raw=true",
@@ -161,7 +173,10 @@
         "aUri": "I.mp3",
         "aFName": "I.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "J.glb?raw=true",
@@ -169,7 +184,10 @@
         "aUri": "J.mp3",
         "aFName": "J.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "K.glb?raw=true",
@@ -177,7 +195,10 @@
         "aUri": "K.mp3",
         "aFName": "K.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "L.glb?raw=true",
@@ -185,7 +206,10 @@
         "aUri": "L.mp3",
         "aFName": "L.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "M.glb?raw=true",
@@ -193,7 +217,10 @@
         "aUri": "M.mp3",
         "aFName": "M.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "N.glb?raw=true",
@@ -201,7 +228,10 @@
         "aUri": "N.mp3",
         "aFName": "N.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "O.glb?raw=true",
@@ -209,7 +239,10 @@
         "aUri": "O.mp3",
         "aFName": "O.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "P.glb?raw=true",
@@ -217,7 +250,10 @@
         "aUri": "P.mp3",
         "aFName": "P.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "Q.glb?raw=true",
@@ -225,7 +261,10 @@
         "aUri": "Q.mp3",
         "aFName": "Q.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "R.glb?raw=true",
@@ -233,7 +272,10 @@
         "aUri": "R.mp3",
         "aFName": "R.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "S.glb?raw=true",
@@ -241,7 +283,10 @@
         "aUri": "S.mp3",
         "aFName": "S.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "T.glb?raw=true",
@@ -249,7 +294,10 @@
         "aUri": "T.mp3",
         "aFName": "T.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "U.glb?raw=true",
@@ -257,7 +305,10 @@
         "aUri": "U.mp3",
         "aFName": "U.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "V.glb?raw=true",
@@ -265,7 +316,10 @@
         "aUri": "V.mp3",
         "aFName": "V.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "W.glb?raw=true",
@@ -273,7 +327,10 @@
         "aUri": "W.mp3",
         "aFName": "W.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "X.glb?raw=true",
@@ -281,7 +338,10 @@
         "aUri": "X.mp3",
         "aFName": "X.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "Y.glb?raw=true",
@@ -289,7 +349,10 @@
         "aUri": "Y.mp3",
         "aFName": "Y.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "Z.glb?raw=true",
@@ -297,7 +360,10 @@
         "aUri": "Z.mp3",
         "aFName": "Z.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_BACK",
+        "exitAnim": "EXIT_TO_RIGHT",
+        "anim": "BOUNCE"
       }
     ],
     "numbers": [
@@ -310,7 +376,7 @@
         "maxSize": "2",
         "arrAnim": "ARRIVE_FROM_LEFT",
         "exitAnim": "EXIT_TO_BACK",
-        "anim": "ROTATE"
+        "anim": "BOUNCE"
       },
       {
         "mUri": "2.glb?raw=true",
@@ -319,8 +385,8 @@
         "aFName": "2.mp3",
         "minSize": "0.1",
         "maxSize": "2",
-        "arrAnim": "ARRIVE_FROM_BACK",
-        "exitAnim": "EXIT_TO_RIGHT",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_BACK",
         "anim": "BOUNCE"
       },
       {
@@ -330,8 +396,8 @@
         "aFName": "3.mp3",
         "minSize": "0.1",
         "maxSize": "2",
-        "arrAnim": "FALL_FROM_TOP",
-        "exitAnim": "EXIT_TO_RIGHT",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_BACK",
         "anim": "BOUNCE"
       },
       {
@@ -342,7 +408,7 @@
         "minSize": "0.1",
         "maxSize": "2",
         "arrAnim": "ARRIVE_FROM_LEFT",
-        "exitAnim": "EXIT_TO_RIGHT",
+        "exitAnim": "EXIT_TO_BACK",
         "anim": "BOUNCE"
       },
       {
@@ -353,8 +419,8 @@
         "minSize": "0.1",
         "maxSize": "2",
         "arrAnim": "ARRIVE_FROM_LEFT",
-        "exitAnim": "EXIT_TO_RIGHT",
-        "anim": "ROTATE"
+        "exitAnim": "EXIT_TO_BACK",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "6.glb?raw=true",
@@ -362,7 +428,10 @@
         "aUri": "6.mp3",
         "aFName": "6.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_BACK",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "7.glb?raw=true",
@@ -370,7 +439,10 @@
         "aUri": "7.mp3",
         "aFName": "7.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_BACK",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "8.glb?raw=true",
@@ -378,7 +450,10 @@
         "aUri": "8.mp3",
         "aFName": "8.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_BACK",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "9.glb?raw=true",
@@ -386,7 +461,10 @@
         "aUri": "9.mp3",
         "aFName": "9.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_BACK",
+        "anim": "BOUNCE"
       },
       {
         "mUri": "10.glb?raw=true",
@@ -394,7 +472,10 @@
         "aUri": "10.mp3",
         "aFName": "10.mp3",
         "minSize": "0.1",
-        "maxSize": "2"
+        "maxSize": "2",
+        "arrAnim": "ARRIVE_FROM_LEFT",
+        "exitAnim": "EXIT_TO_BACK",
+        "anim": "BOUNCE"
       }
     ]
   }

@@ -1,16 +1,32 @@
 pluginManagement {
     repositories {
+
+
+        maven {
+            url "https://sdk.smartlook.com/android/release"
+        }
         google()
         mavenCentral()
         gradlePluginPortal()
+
     }
 }
+
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        jcenter()
         google()
         mavenCentral()
+        maven {
+            url "https://sdk.smartlook.com/android/release"
+        }
+
+        maven { url "https://jitpack.io" }
     }
 }
+
+
 rootProject.name = "KIds World"
 include ':app'

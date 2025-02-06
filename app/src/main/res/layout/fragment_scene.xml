@@ -11,19 +11,23 @@
         android:id="@+id/arFragmentHolder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:keepScreenOn="true">
+        android:keepScreenOn="true"></FrameLayout>
 
-
-    </FrameLayout>
 
     <ImageButton
         android:id="@+id/Ib_FSceneBack"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="7dp"
         android:allowClickWhenDisabled="false"
         android:background="@null"
         android:contentDescription="Previous model"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+        android:scaleType="fitXY"
         android:src="@drawable/baseline_arrow_back_24" />
 
     <ImageView
@@ -152,14 +156,63 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loader"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:background="@null"
         android:visibility="gone"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/loader_colors" />
+        app:lottie_rawRes="@raw/rat_loader" />
+
+    <Space
+        android:id="@+id/center_rv"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@null" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lAV_tap_guide"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_below="@id/center_rv"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:background="@null"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_colorFilter="@color/white"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/single_tap_1" />
 
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/Lav_fScene_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:scaleType="fitXY"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/splash" />
+
+    <TextView
+        android:id="@+id/tv_fScene_hinttext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Ib_FSceneBack"
+        android:background="@null"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="35dp" />
+
+    <!--    <ImageView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_centerVertical="true"-->
+    <!--        android:src="@drawable/arplane" />-->
 </RelativeLayout>

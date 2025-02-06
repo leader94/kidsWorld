@@ -28,6 +28,7 @@ public class CommonService {
 
     public static String baseUrl = "http://192.168.1.38:8080/";
 
+
 //    static {
 //        try {
 //            sceneConfig = new JSONObject(CommonService.getJsonStrFromAsset());

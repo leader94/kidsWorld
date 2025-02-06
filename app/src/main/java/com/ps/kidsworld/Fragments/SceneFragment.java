@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,14 +27,21 @@ import com.google.ar.sceneform.rendering.Renderable;
 import com.ps.kidsworld.R;
 import com.ps.kidsworld.core.SceneFrame;
 import com.ps.kidsworld.interfaces.MyOnTapModelListener;
+import com.ps.kidsworld.utils.AppConstants;
+import com.ps.kidsworld.utils.Callback;
 import com.ps.kidsworld.utils.CommonService;
 import com.ps.kidsworld.utils.lrucache.LRUCache;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
+
+
 public class SceneFragment extends Fragment {
     private static final String TAG = SceneFragment.class.getSimpleName();
+    public TextView hintTextView;
     ImageButton moveBtn, prevBtn, nextBtn, playBtn, backBtn;
     ImageView bottomBar;
     MyARFragment myARFragment;
@@ -48,6 +56,7 @@ public class SceneFragment extends Fragment {
     LRUCache<Integer, SceneFrame> lruCache;
     //    MediaPlayer mp = new MediaPlayer();
     MediaPlayer mediaPlayer;
+    LottieAnimationView modelTapGuide, splashScreen;
     private AnimatedVectorDrawable animation;
     private boolean mUserRequestedInstall = true;
     private boolean isSoundPlaying = false;
@@ -55,6 +64,11 @@ public class SceneFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     @Override
@@ -71,11 +85,22 @@ public class SceneFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        splashScreen = (LottieAnimationView) view.findViewById(R.id.Lav_fScene_splash);
+        splashScreen.addAnimatorListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                splashScreen.setVisibility(View.GONE);
+                startShowCase();
+                hintTextView.setText(AppConstants.POINT_TO_FLOOR);
+            }
+        });
         checkARInstalled();
         if (CommonService.bARSupported && CommonService.bARInstalled) {
             myARFragment = new MyARFragment();
             getChildFragmentManager().beginTransaction().add(R.id.arFragmentHolder, myARFragment).commit();
         }
+
         initialise(view);
 
 
@@ -130,6 +155,59 @@ public class SceneFragment extends Fragment {
         initialiseViewsItems(view);
         setNextPrevBtnVisibility();
         addOnClickListeners();
+
+    }
+
+    void startShowCase() {
+
+//        new MaterialShowcaseView.Builder(getActivity())
+//                .setTarget(prevBtn)
+//                .setDismissText("GOT IT")
+//                .setContentText("This is some amazing feature you should know about")
+//                .setDelay(1000)
+//                .singleUse("prevBtn")
+//                .show();
+
+
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(300); // half second between each showcase view
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(getActivity(), "scenefrag_showcase1");
+
+        sequence.setConfig(config);
+
+        sequence.addSequenceItem(prevBtn,
+                "Previous button to see the previous item", "GOT IT");
+
+        sequence.addSequenceItem(playBtn,
+                "Press Play button to play sound", "GOT IT");
+
+        sequence.addSequenceItem(nextBtn,
+                "Next button to see the next item", "GOT IT");
+        sequence.addSequenceItem(backBtn,
+                "To go back to the main menu", "GOT IT");
+
+        sequence.start();
+
+    }
+
+    void initialiseViewsItems(View view) {
+        hintTextView = (TextView) view.findViewById(R.id.tv_fScene_hinttext);
+        prevBtn = (ImageButton) view.findViewById(R.id.Ib_FSceneLeft);
+        nextBtn = (ImageButton) view.findViewById(R.id.Ib_FSceneRight);
+
+        backBtn = (ImageButton) view.findViewById(R.id.Ib_FSceneBack);
+
+        playBtn = (ImageButton) view.findViewById(R.id.Ib_FScenePlay);
+//        moveBtn = (ImageButton) view.findViewById(R.id.btnMove);
+//        setMoveBtnImage();
+
+
+        bottomBar = (ImageView) view.findViewById(R.id.IV_FScene_1);
+
+        loader = (LottieAnimationView) view.findViewById(R.id.loader);
+        modelTapGuide = (LottieAnimationView) view.findViewById(R.id.lAV_tap_guide);
+
     }
 
     // Must be called only once
@@ -143,10 +221,7 @@ public class SceneFragment extends Fragment {
                     @Override
                     public void onModelDownloaded(Renderable renderable) {
                         curFrame.setRenderable(renderable);
-                        lruCache.put(curFrameNo, new SceneFrame(curFrame));  // TODO check reference bug here
-                        isLoadingFrame = false;
-                        myARFragment.startModelAnimation(false);
-                        playSound(curFrame);
+                        lruCache.put(curFrameNo, new SceneFrame(curFrame));
                         preloadFrame(curFrameNo + 1);
                     }
 
@@ -154,6 +229,17 @@ public class SceneFragment extends Fragment {
                     public void onModelError(Throwable exception) {
                         isLoadingFrame = false;
                         preloadFrame(curFrameNo + 1);
+                    }
+                }, new Callback() {
+                    @Override
+                    public void OnSuccess() {
+                        isLoadingFrame = false;
+                        playSound(curFrame);
+                    }
+
+                    @Override
+                    public void OnError(Exception e) {
+
                     }
                 });
             }
@@ -183,21 +269,19 @@ public class SceneFragment extends Fragment {
 
         playBtn.setOnClickListener(view -> {
             if (!buttonClickAllowed()) return;
-            myARFragment.startModelAnimation(false);
             playSound(curFrame);
-            myARFragment.startAnim(curFrame.getAnimation(), false, new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationCancel(Animator animation) {
-                    super.onAnimationCancel(animation);
-                    isAnimating = false;
-                }
-
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
-                    isAnimating = false;
-                }
-            });
+//            myARFragment.startAnim(curFrame.getAnimation(), false, new AnimatorListenerAdapter() {
+//                @Override
+//                public void onAnimationCancel(Animator animation) {
+//                    super.onAnimationCancel(animation);
+//                    isAnimating = false;
+//                }
+//                @Override
+//                public void onAnimationEnd(Animator animation) {
+//                    super.onAnimationEnd(animation);
+//                    isAnimating = false;
+//                }
+//            });
         });
         nextBtn.setOnClickListener(view -> {
             if (!buttonClickAllowed()) return;
@@ -225,11 +309,22 @@ public class SceneFragment extends Fragment {
 
                 if (lruCache.get(frameNo) != null) {
                     curFrame = lruCache.get(frameNo);
-                    myARFragment.replaceModelWithCustomModel(curFrame);
-                    isLoadingFrame = false;
-                    myARFragment.startModelAnimation(false);
-                    playSound(curFrame);
-                    preloadFrame(frameNo + relativePreLoadFrameNo);
+                    myARFragment.replaceModelWithCustomModel(curFrame, new Callback() {
+                        @Override
+                        public void OnSuccess() {
+                            isLoadingFrame = false;
+                            playSound(curFrame);
+                            preloadFrame(frameNo + relativePreLoadFrameNo);
+                        }
+
+                        @Override
+                        public void OnError(Exception e) {
+                            isLoadingFrame = false;
+                            playSound(curFrame);
+                            preloadFrame(frameNo + relativePreLoadFrameNo);
+                        }
+                    });
+
                 } else {
 
                     curFrame = new SceneFrame(curSceneArr.getJSONObject(frameNo),
@@ -239,16 +334,23 @@ public class SceneFragment extends Fragment {
                         public void onModelDownloaded(Renderable renderable) {
                             curFrame.setRenderable(renderable);
                             lruCache.put(frameNo, new SceneFrame(curFrame)); // TODO check ref bug here
-                            isLoadingFrame = false;
-                            myARFragment.startModelAnimation(false);
-                            playSound(curFrame);
                             preloadFrame(frameNo + relativePreLoadFrameNo);
                         }
 
                         @Override
                         public void onModelError(Throwable exception) {
-                            isLoadingFrame = false;
                             preloadFrame(frameNo + relativePreLoadFrameNo);
+                        }
+                    }, new Callback() {
+                        @Override
+                        public void OnSuccess() {
+                            isLoadingFrame = false;
+                            playSound(curFrame);
+                        }
+
+                        @Override
+                        public void OnError(Exception e) {
+                            isLoadingFrame = false;
                         }
                     });
                 }
@@ -315,23 +417,6 @@ public class SceneFragment extends Fragment {
             // set icon to move
             moveBtn.setBackgroundResource(R.drawable.outline_open_with_24);
         }
-    }
-
-    void initialiseViewsItems(View view) {
-        prevBtn = (ImageButton) view.findViewById(R.id.Ib_FSceneLeft);
-        nextBtn = (ImageButton) view.findViewById(R.id.Ib_FSceneRight);
-
-        backBtn = (ImageButton) view.findViewById(R.id.Ib_FSceneBack);
-
-        playBtn = (ImageButton) view.findViewById(R.id.Ib_FScenePlay);
-//        moveBtn = (ImageButton) view.findViewById(R.id.btnMove);
-//        setMoveBtnImage();
-
-
-        bottomBar = (ImageView) view.findViewById(R.id.IV_FScene_1);
-
-        loader = (LottieAnimationView) view.findViewById(R.id.loader);
-
     }
 
 

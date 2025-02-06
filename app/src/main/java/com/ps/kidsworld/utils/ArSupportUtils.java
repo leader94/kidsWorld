@@ -22,7 +22,6 @@ public class ArSupportUtils {
     private Vector3 getSizeOfNode(Node node) {
         Box box = (Box) node.getRenderable().getCollisionShape();
         return box.getSize();
-
     }
 
     public void bounceAnim(Node node, boolean repeat, Animator.AnimatorListener callback) {
@@ -47,25 +46,55 @@ public class ArSupportUtils {
 
 
         AnimatorSet set = new AnimatorSet();
+
+
         set.play(objectAnimation1)
                 .before(objectAnimation2);
-        _addAnimatorSetListener(set, callback);
+
+
+        _addAnimatorSetListener(set, callback, repeat);
         set.start();
 
     }
+
+    public void upDownAnim(Node node, boolean repeat, Animator.AnimatorListener callback) {
+        long duration = 700;
+        Vector3 sizeOfNode = getSizeOfNode(node);
+        Float jumpHeight = sizeOfNode.y * .2f;  //@TODO not working
+        Vector3 orgPos = node.getWorldPosition();
+
+
+        ObjectAnimator objectAnimation1 = ObjectAnimator.ofObject(node, "worldPosition", new Vector3Evaluator(),
+                node.getWorldPosition(),
+                new Vector3(node.getWorldPosition().x, node.getWorldPosition().y + jumpHeight, node.getWorldPosition().z));
+        objectAnimation1.setAutoCancel(true);
+        objectAnimation1.setTarget(node);
+        objectAnimation1.setInterpolator(new LinearInterpolator());
+        objectAnimation1.setDuration(duration);
+
+        ObjectAnimator objectAnimation2 = ObjectAnimator.ofObject(node, "worldPosition", new Vector3Evaluator(),
+                new Vector3(node.getWorldPosition().x, node.getWorldPosition().y + jumpHeight, node.getWorldPosition().z),
+                orgPos);
+        objectAnimation2.setAutoCancel(true);
+        objectAnimation2.setTarget(node);
+        objectAnimation2.setInterpolator(new LinearInterpolator());
+        objectAnimation2.setDuration(duration);
+
+        AnimatorSet set = new AnimatorSet();
+
+        set.play(objectAnimation1)
+                .before(objectAnimation2);
+
+        _addAnimatorSetListener(set, callback, repeat);
+        set.start();
+    }
+
 
     public void arriveFromBackAnim(Node node, boolean repeat, Animator.AnimatorListener callback) {
         ObjectAnimator objectAnimation1 = ObjectAnimator.ofObject(node, "worldPosition", new Vector3Evaluator(),
                 new Vector3(node.getWorldPosition().x, node.getWorldPosition().y, node.getWorldPosition().z - 0.8f)
                 , node.getWorldPosition());
         _setObjectAnimatorProperties(objectAnimation1, node, new OvershootInterpolator(), 600, callback, null);
-
-//        objectAnimation1.setAutoCancel(true);
-//        objectAnimation1.setTarget(node);
-//        objectAnimation1.setInterpolator(new OvershootInterpolator());
-//        objectAnimation1.setDuration(600);
-//        _addObjectAnimatorListener(objectAnimation1, callback);
-//        objectAnimation1.start();
     }
 
     public void arriveFromLeftAnim(Node node, boolean repeat, Animator.AnimatorListener callback) {
@@ -74,14 +103,6 @@ public class ArSupportUtils {
                 , node.getWorldPosition());
 
         _setObjectAnimatorProperties(objectAnimation1, node, new OvershootInterpolator(), 600, callback, null);
-
-
-//        objectAnimation1.setAutoCancel(true);
-//        objectAnimation1.setTarget(node);
-//        objectAnimation1.setInterpolator(new OvershootInterpolator());
-//        objectAnimation1.setDuration(600);
-//        _addObjectAnimatorListener(objectAnimation1, callback);
-//        objectAnimation1.start();
     }
 
     public void bounceFromLeftAnim(Node node, boolean repeat, Animator.AnimatorListener callback) {
@@ -113,13 +134,6 @@ public class ArSupportUtils {
                 new Vector3(node.getWorldPosition().x + 2.0f, node.getWorldPosition().y, node.getWorldPosition().z)
         );
         _setObjectAnimatorProperties(objectAnimation1, node, new AnticipateInterpolator(), 600, callback, orgPos);
-
-//        objectAnimation1.setAutoCancel(true);
-//        objectAnimation1.setTarget(node);
-//        objectAnimation1.setInterpolator(new AnticipateInterpolator());
-//        objectAnimation1.setDuration(600);
-//        _addObjectAnimatorListener(objectAnimation1, callback, node, orgPos);
-//        objectAnimation1.start();
     }
 
     public void exitToBackAnim(Node node, boolean repeat, Animator.AnimatorListener callback) {
@@ -130,14 +144,6 @@ public class ArSupportUtils {
         );
 
         _setObjectAnimatorProperties(objectAnimation1, node, new AnticipateInterpolator(), 600, callback, orgPos);
-//        objectAnimation1.setAutoCancel(true);
-//        objectAnimation1.setTarget(node);
-//        objectAnimation1.setInterpolator(new AnticipateInterpolator());
-//        objectAnimation1.setDuration(600);
-//
-//        _addObjectAnimatorListener(objectAnimation1, callback, node, orgPos);
-//        objectAnimation1.start();
-
     }
 
     public void fallFromTopAnim(Node node, boolean repeat, Animator.AnimatorListener callback) {
@@ -176,7 +182,7 @@ public class ArSupportUtils {
 
         AnimatorSet set = new AnimatorSet();
         set.play(orbitAnimation).before(orbitAnimation2);
-        _addAnimatorSetListener(set, callback);
+        _addAnimatorSetListener(set, callback, repeat);
         set.start();
     }
 
@@ -198,6 +204,14 @@ public class ArSupportUtils {
     private void _addObjectAnimatorListener(ObjectAnimator objectAnimator, Animator.AnimatorListener callback, Node node, Vector3 orgPos) {
         objectAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+                if (callback != null) {
+                    callback.onAnimationStart(animation);
+                }
+            }
+
+            @Override
             public void onAnimationCancel(Animator animation) {
                 super.onAnimationCancel(animation);
                 if (node != null && orgPos != null) node.setWorldPosition(orgPos);
@@ -213,23 +227,62 @@ public class ArSupportUtils {
         });
     }
 
-    private void _addAnimatorSetListener(AnimatorSet set, Animator.AnimatorListener callback) {
+    private void _addAnimatorSetListener(AnimatorSet set, Animator.AnimatorListener callback, boolean repeat) {
         set.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+                if (callback != null) {
+                    callback.onAnimationStart(animation);
+                }
+            }
+
             @Override
             public void onAnimationCancel(Animator animation) {
                 super.onAnimationCancel(animation);
-                callback.onAnimationCancel(animation);
+                if (callback != null) {
+                    callback.onAnimationCancel(animation);
+                }
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                callback.onAnimationEnd(animation);
+                if (repeat) {
+                    set.start();
+                }
+                if (callback != null) {
+                    callback.onAnimationEnd(animation);
+                }
             }
         });
     }
 
+
+    public void startWalking(Node startNode, Node endNode, Animator.AnimatorListener callback) {
+        ObjectAnimator objectAnimation = new ObjectAnimator();
+        objectAnimation.setAutoCancel(true);
+        objectAnimation.setTarget(startNode);
+
+        // All the positions should be world positions
+        // The first position is the start, and the second is the end.
+        objectAnimation.setObjectValues(startNode.getWorldPosition(), endNode.getWorldPosition());
+
+        // Use setWorldPosition to position andy.
+        objectAnimation.setPropertyName("worldPosition");
+
+        // The Vector3Evaluator is used to evaluator 2 vector3 and return the next
+        // vector3.  The default is to use lerp.
+        objectAnimation.setEvaluator(new Vector3Evaluator());
+        // This makes the animation linear (smooth and uniform).
+        objectAnimation.setInterpolator(new LinearInterpolator());
+        // Duration in ms of the animation.
+        objectAnimation.setDuration(500);
+        _addObjectAnimatorListener(objectAnimation, callback);
+        objectAnimation.start();
+    }
+
     public static enum Animation {
-        BOUNCE, ARRIVE_FROM_BACK, ARRIVE_FROM_LEFT, EXIT_TO_RIGHT, EXIT_TO_BACK, FALL_FROM_TOP, ROTATE
+        BOUNCE, ARRIVE_FROM_BACK, ARRIVE_FROM_LEFT, EXIT_TO_RIGHT, EXIT_TO_BACK, FALL_FROM_TOP, ROTATE, UP_DOWN
     }
 }

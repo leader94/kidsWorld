@@ -3,8 +3,8 @@ package com.ps.kidsworld;
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.res.Configuration;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,15 +12,14 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.ar.core.ArCoreApk;
 import com.ps.kidsworld.Fragments.MainListFragment;
+import com.ps.kidsworld.services.BackgroundSoundService;
 import com.ps.kidsworld.utils.CommonService;
+import com.smartlook.android.core.api.Smartlook;
 
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -36,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private static final double MIN_OPENGL_VERSION = 3.0;
 
     private static Context mContext;
-
-    AppCompatActivity self;
-
+    Intent backgroundSoundServiceIntent;
     ProgressDialog pd;
+    private AppCompatActivity self;
+//    BackgroundSound mBackgroundSound = new BackgroundSound();
 
     /**
      * Returns false and displays an error message if Sceneform can not run, true if Sceneform can run
@@ -74,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         return mContext;
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
+        Smartlook smartlook = Smartlook.getInstance();
+        smartlook.getPreferences().setProjectKey("25c0d1699268f9823445ec5ce37d328ad9e58aad");
+        smartlook.start();
         checkARSupport();
 
         if (!checkIsSupportedDeviceOrFinish(this)) {
@@ -94,41 +96,26 @@ public class MainActivity extends AppCompatActivity {
 
         addLayoutItems();
         new JsonTask().execute("https://drive.google.com/uc?export=download&id=1yYxR0W8g3Jscjto3QknNqHQI6SUDd6aM");
+        backgroundSoundServiceIntent = new Intent(this, BackgroundSoundService.class);
+
     }
 
+
     private void addLayoutItems() {
-        CommonService.replaceFragment(self, R.id.frame_layout, new MainListFragment());
+        CommonService.addFragment(self, R.id.frame_layout, new MainListFragment());
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        startService(backgroundSoundServiceIntent);
     }
 
     @Override
-    public void onBackPressed() {
-        FragmentManager manager = getSupportFragmentManager();
-
-        if (manager.getBackStackEntryCount() > 1) {
-            // If there are back-stack entries, leave the FragmentActivity
-            // implementation take care of them.
-            manager.popBackStack();
-
-        } else {
-            // Otherwise, ask user if he wants to leave :)
-            new AlertDialog.Builder(this)
-                    .setTitle("Really Exit?")
-                    .setMessage("Are you sure you want to exit?")
-                    .setNegativeButton(android.R.string.no, null)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface arg0, int arg1) {
-                            MainActivity.super.onBackPressed();
-                            MainActivity.super.onBackPressed();
-                        }
-                    }).create().show();
-        }
+    protected void onPause() {
+        super.onPause();
+        stopService(backgroundSoundServiceIntent);
     }
 
     void checkARSupport() {
@@ -146,18 +133,6 @@ public class MainActivity extends AppCompatActivity {
             CommonService.bARSupported = true;
         } else { // The device is unsupported or unknown.
             CommonService.bARSupported = false;
-        }
-    }
-
-    @Override
-    public void onConfigurationChanged(@NotNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -236,4 +211,53 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public class BackgroundSound extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            MediaPlayer player = MediaPlayer.create(MainActivity.this, R.raw.background_music);
+            player.setLooping(true); // Set looping
+            player.setVolume(0.4f, 0.4f);
+            player.start();
+            return null;
+        }
+
+    }
+//    @Override
+//    public void onBackPressed() {
+//        Log.i(TAG, "inside Onbackpresss");
+//        FragmentManager manager = getSupportFragmentManager();
+//
+//        if (manager.getBackStackEntryCount() > 1) {
+//            // If there are back-stack entries, leave the FragmentActivity
+//            // implementation take care of them.
+//            manager.popBackStack();
+//
+//        } else {
+//            // Otherwise, ask user if he wants to leave :)
+//            new AlertDialog.Builder(this)
+//                    .setTitle("Really Exit?")
+//                    .setMessage("Are you sure you want to exit?")
+//                    .setNegativeButton(android.R.string.no, null)
+//                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface arg0, int arg1) {
+//                            MainActivity.super.onBackPressed();
+//                            MainActivity.super.onBackPressed();
+//                        }
+//                    }).create().show();
+//        }
+//    }
+
+
+//    @Override
+//    public void onConfigurationChanged(@NotNull Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//
+//        // Checks the orientation of the screen
+//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+//        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+//            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 }
